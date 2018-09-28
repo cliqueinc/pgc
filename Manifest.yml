@@ -1,0 +1,101 @@
+exclude_dir:
+- cmd
+exclude_build:
+- appenginevm
+- appengine
+- android
+- integration
+- ignore
+exclude_packages: []
+local_packages: []
+constraints: {}
+packages:
+  github.com/davecgh/go-spew:
+    version: v1.1.0
+    commithash: a476722483882dd40b8111f0eb64e1d7f43f56e4
+    subpackages: []
+    deps: []
+  github.com/jackc/pgx:
+    version: v3.0.1
+    commithash: 3e49ad8decfd543c62be37e3d2474692bbfd45a0
+    subpackages:
+    - github.com/jackc/pgx/chunkreader
+    - github.com/jackc/pgx/internal/sanitize
+    - github.com/jackc/pgx/pgio
+    - github.com/jackc/pgx/pgproto3
+    - github.com/jackc/pgx/pgtype
+    - github.com/jackc/pgx/stdlib
+    deps:
+    - github.com/lib/pq
+    - github.com/pkg/errors
+    - github.com/satori/go.uuid
+    - github.com/shopspring/decimal
+    - github.com/sirupsen/logrus
+    - go.uber.org/zap
+    - go.uber.org/zap/zapcore
+  github.com/lib/pq:
+    version: go1.0-cutoff
+    commithash: e42267488fe361b9dc034be7a6bffef5b195bceb
+    subpackages:
+    - github.com/lib/pq/oid
+    deps: []
+  github.com/pkg/errors:
+    version: v0.8.0
+    commithash: c605e284fe17294bda444b34710735b29d1a9d90
+    subpackages: []
+    deps: []
+  github.com/satori/go.uuid:
+    version: v1.1.0
+    commithash: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
+    subpackages: []
+    deps: []
+  github.com/shopspring/decimal:
+    version: ""
+    commithash: b9ab2bce742bffa417d3c01158f6062d5e05ecb4
+    subpackages: []
+    deps: []
+  github.com/sirupsen/logrus:
+    version: v1.0.3
+    commithash: 89742aefa4b206dcf400792f3bd35b542998eb3b
+    subpackages: []
+    deps:
+    - golang.org/x/crypto/ssh/terminal
+    - golang.org/x/sys/unix
+  go.uber.org/atomic:
+    version: 4e336646b2ef9fc6e47be8e21594178f98e5ebcf
+    commithash: 4e336646b2ef9fc6e47be8e21594178f98e5ebcf
+    subpackages: []
+    deps: []
+  go.uber.org/multierr:
+    version: 3c4937480c32f4c13a875a1829af76c98ca3d40a
+    commithash: 3c4937480c32f4c13a875a1829af76c98ca3d40a
+    subpackages: []
+    deps:
+    - go.uber.org/atomic
+  go.uber.org/zap:
+    version: v1.6.0
+    commithash: 3216c4c73e8ebbafff73c456dd27143f4a7c1f94
+    subpackages:
+    - go.uber.org/zap/buffer
+    - go.uber.org/zap/internal/bufferpool
+    - go.uber.org/zap/internal/color
+    - go.uber.org/zap/internal/exit
+    - go.uber.org/zap/zapcore
+    deps:
+    - go.uber.org/atomic
+    - go.uber.org/multierr
+  golang.org/x/crypto:
+    version: ""
+    commithash: eb71ad9bd329b5ac0fd0148dd99bd62e8be8e035
+    subpackages:
+    - golang.org/x/crypto/ssh/terminal
+    deps:
+    - golang.org/x/sys/unix
+    - golang.org/x/sys/windows
+  golang.org/x/sys:
+    version: ""
+    commithash: 07c182904dbd53199946ba614a412c61d3c548f5
+    subpackages:
+    - golang.org/x/sys/unix
+    - golang.org/x/sys/windows
+    deps: []

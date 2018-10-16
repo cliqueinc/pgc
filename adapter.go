@@ -9,8 +9,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/jackc/pgx"
 	"github.com/cliqueinc/pgc/pgcq"
+	"github.com/jackc/pgx"
 )
 
 // Limits for db ops.

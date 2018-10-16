@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cliqueinc/pgc/util"
 	pgc "github.com/cliqueinc/pgc"
 	"github.com/cliqueinc/pgc/pgcq"
+	"github.com/cliqueinc/pgc/util"
 )
 
 // Please see testing guidelines in the readme

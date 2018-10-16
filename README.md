@@ -1,16 +1,25 @@
 # PGC v2 Specification
 
-## Quick Start
+## Quickstart
+You will need postgres installed and running locally on port 5432
 
-PGC is being used in production by Clique for almost one year. It is a
-product that we are actively supporting and enhancing
+On mac you can `brew install postgres` and it will tell you how to run it
+
+To confirm everything is working, you can run the pgc tests
+
+`make test`
+
+## Principles
+
+PGC is being used in production by Clique for over two years. It is a
+product that we are actively supporting and enhancing.
 
 PGC is a *specific* postgres library designed to make using structs with
 postgres tables very easy. It is designed for heavy use of jsonb.
 
 Although technically an ORM, our aim is to keep this library light and simple.
 A main concern is supporting distributed, high-traffic systems. This means
-avoiding things like nasty, nested queries that some ORMs do.
+avoiding things like complicated, nested queries that some ORMs do.
 
 ## Using Code Generation To Get Started
 
@@ -382,17 +391,6 @@ This call will product query like:
 ```sql
 SELECT "user_id", SUM(price) as "total_price" from "user" GROUP BY "user_id" HAVING SUM(price) < 1000 ORDER BY "total_price" DESC;
 ```
-
-## Installation
-
-This assumes you are using govendor. See the cyclops readme for more info on govendor.
-
-- govendor add github.com/cliqueinc/cws-mono/pgc
-- govendor add github.com/cliqueinc/cws-mono/pgc/pgccmd
-- cd vendor/github.com/cliqueinc/cws-mono/pgc/pgccmd && go install -v
-
-At this point you will have pgc installed and should be able to run the command pgccmd. If you can't,
-make sure you have $GOPATH/bin in your path.
 
 ## Generate sum Codez!
 

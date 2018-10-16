@@ -3,7 +3,7 @@ package main
 import "testing"
 
 func TestInitPGC(t *testing.T) {
-	initPGC("cyclops_local", "localhost", "", "", "disable", "")
+	initPGC("pgc_local", "localhost", "", "", "disable", "")
 }
 
 func TestInitPGCPanicsPort(t *testing.T) {
@@ -13,7 +13,7 @@ func TestInitPGCPanicsPort(t *testing.T) {
 				t.Errorf("TestInitPGCPanicsPort should have panicked")
 			}
 		}()
-		initPGC("cyclops_local", "localhost", "", "abc", "disable", "")
+		initPGC("pgc_local", "localhost", "", "abc", "disable", "")
 	}()
 }
 
@@ -24,6 +24,6 @@ func TestInitPGCPanicsConnect(t *testing.T) {
 				t.Errorf("TestInitPGCPanicsConnect should have panicked")
 			}
 		}()
-		initPGC("cyclops_local", "localho", "", "", "disable", "")
+		initPGC("pgc_local", "localho", "", "", "disable", "")
 	}()
 }

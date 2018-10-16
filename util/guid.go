@@ -7,8 +7,6 @@ import (
 	"fmt"
 	"strings"
 
-	"common/random"
-
 	"github.com/pborman/uuid"
 )
 
@@ -56,7 +54,7 @@ func NewGuid() string {
 }
 
 func _getNewShardId() uint64 {
-	return uint64(random.RandomInt(0, 4095))
+	return uint64(RandomInt(0, 4095))
 }
 
 func _newGuid(shardId uint64) string {

@@ -17,9 +17,9 @@ func TestMain(m *testing.M) {
 	envDBName := os.Getenv("POSTGRES_DB")
 
 	var shouldDropDB bool
-	if !strings.HasPrefix(envDBName, "cyclops_tmp") {
+	if !strings.HasPrefix(envDBName, "pgc_tmp") {
 		// Create and new a tmp db
-		envDBName = CreateDB("cyclops_tmp")
+		envDBName = CreateDB("pgc_tmp")
 		shouldDropDB = true
 
 	}

@@ -10,9 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"common/guid"
-
 	"github.com/cliqueinc/pgc/pgcq"
+	"github.com/cliqueinc/pgc/util"
 )
 
 const (
@@ -151,7 +150,7 @@ func (pgcsv MigrationLog) TableName() string { return "pgc_migration_log" }
 // If this wasn't successful, manually set that fact after calling this
 func NewLog(action, message string, version string) *MigrationLog {
 	return &MigrationLog{
-		ID:      guid.New(),
+		ID:      util.NewGuid(),
 		Created: time.Now().UTC(),
 		Action:  action,
 		Message: message,

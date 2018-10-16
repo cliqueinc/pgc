@@ -1,11 +1,12 @@
+vendor_path: ./vendor
 exclude_dir:
 - cmd
 exclude_build:
+- integration
+- ignore
 - appenginevm
 - appengine
 - android
-- integration
-- ignore
 exclude_packages: []
 local_packages: []
 constraints: {}
@@ -13,6 +14,11 @@ packages:
   github.com/davecgh/go-spew:
     version: v1.1.0
     commithash: a476722483882dd40b8111f0eb64e1d7f43f56e4
+    subpackages: []
+    deps: []
+  github.com/google/uuid:
+    version: 1.0.0
+    commithash: 9b3b1e0f5f99ae461456d768e7d301a7acdaa2d8
     subpackages: []
     deps: []
   github.com/jackc/pgx:
@@ -39,6 +45,12 @@ packages:
     subpackages:
     - github.com/lib/pq/oid
     deps: []
+  github.com/pborman/uuid:
+    version: v1.2.0
+    commithash: 8b1b92947f46224e3b97bb1a3a5b0382be00d31e
+    subpackages: []
+    deps:
+    - github.com/google/uuid
   github.com/pkg/errors:
     version: v0.8.0
     commithash: c605e284fe17294bda444b34710735b29d1a9d90

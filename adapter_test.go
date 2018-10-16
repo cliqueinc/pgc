@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cliqueinc/pgc/util"
 	"github.com/cliqueinc/pgc"
+	"github.com/cliqueinc/pgc/util"
 )
 
 func TestAdapter(t *testing.T) {

@@ -267,11 +267,11 @@ func UpdateSchema(execDefault bool) error {
 	}
 
 	if len(installedMigrations) == 0 {
-		fmt.Printf("Schema is up to date\n")
+		// fmt.Printf("Schema is up to date\n")
 		return nil
 	}
 
-	fmt.Printf("*** Migration(s) (%s) have been installed ***\n", strings.Join(installedMigrations, ", "))
+	// fmt.Printf("*** Migration(s) (%s) have been installed ***\n", strings.Join(installedMigrations, ", "))
 	return nil
 }
 
@@ -383,7 +383,7 @@ func RollbackLatest() error {
 		return fmt.Errorf("fail get latest schema version: %v", err)
 	}
 	if !found {
-		fmt.Printf("Nothing to rollback\n")
+		// fmt.Printf("Nothing to rollback\n")
 		return nil
 	}
 	m, found := mh.migrations[latestVersion.Version]
@@ -403,7 +403,7 @@ func RollbackLatest() error {
 	)
 	MustInsert(sLog)
 
-	fmt.Printf("Rolled back from \"%s\" to \"%s\"\n", latestVersion.Version, previousMigration.Version)
+	// fmt.Printf("Rolled back from \"%s\" to \"%s\"\n", latestVersion.Version, previousMigration.Version)
 
 	return nil
 }
@@ -446,7 +446,7 @@ func reset() error {
 	sLog := NewLog(actionReset, "Reset all data", "")
 	MustInsert(sLog)
 
-	fmt.Print("Migation data has been reseted\n")
+	// fmt.Print("Migation data has been reset\n")
 	return nil
 }
 

@@ -13,7 +13,7 @@ func TestMigrationHandler(t *testing.T) {
 		Created time.Time
 	}
 
-	migrationHandler := &migrationHandler{}
+	migrationHandler := &MigrationHandler{}
 	migrationHandler.RegisterMigration(
 		"2017-09-15:15:08:52",
 		GenerateSchema(&User{}),

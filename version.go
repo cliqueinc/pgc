@@ -35,7 +35,7 @@ const (
 
 var (
 	// mh keeps all migrration data and handles migration operations.
-	mh *migrationHandler
+	mh *MigrationHandler
 )
 
 // RegisterMigrationPath registers migration path for performing migration operations.
@@ -43,7 +43,7 @@ func RegisterMigrationPath(migrationPath string) error {
 	if migrationPath == "" {
 		return fmt.Errorf("invalid migration path: %s", migrationPath)
 	}
-	mh = &migrationHandler{
+	mh = &MigrationHandler{
 		MigrationPath: migrationPath,
 	}
 
@@ -89,7 +89,7 @@ func RegisterMigrationPath(migrationPath string) error {
 }
 
 // migrationHandler handles all db migrations.
-type migrationHandler struct {
+type MigrationHandler struct {
 	migrations map[string]migration
 
 	// migration paht is used to determine absolute path to each migration so pgc cmd tool may be called from everywhere.
@@ -106,7 +106,7 @@ type migration struct {
 }
 
 // RegisterMigration registers migration to process during migration update.
-func (h *migrationHandler) RegisterMigration(name string, upSQL, downSQL string) {
+func (h *MigrationHandler) RegisterMigration(name string, upSQL, downSQL string) {
 	if h.migrations == nil {
 		h.migrations = make(map[string]migration)
 	}
@@ -117,7 +117,7 @@ func (h *migrationHandler) RegisterMigration(name string, upSQL, downSQL string)
 }
 
 // MigrationVersions returns slice of sorted migration versions.
-func (h *migrationHandler) MigrationVersions() []string {
+func (h *MigrationHandler) MigrationVersions() []string {
 	versions := make([]string, 0, len(h.migrations))
 	for v := range h.migrations {
 		versions = append(versions, v)

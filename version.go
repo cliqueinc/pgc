@@ -185,7 +185,7 @@ func InitSchema(execDefault bool) error {
 
 	for _, migration := range existing {
 		if _, ok := mh.migrations[migration.Version]; !ok {
-			fmt.Printf("Warning: couldn't find schema version (%s)\n", migration.Version)
+			// fmt.Printf("Warning: couldn't find schema version (%s)\n", migration.Version)
 		}
 	}
 
@@ -194,7 +194,7 @@ func InitSchema(execDefault bool) error {
 	// At this point the schema versioning tables should be ready to go.
 	// Typically you would call UpdateSchema after this
 	if created { // Can this ever be false at this point?
-		fmt.Println("Schema versioning is now initialized. Run `$ pgccmd status` for info")
+		// fmt.Println("Schema versioning is now initialized. Run `$ pgccmd status` for info")
 		if execDefault { // If you have a default schema, you might want to run it when no migration
 			// table exist yet like in the case with a new local install or new server environment
 			return ExecuteMigration("default") // Return any associated error
@@ -431,7 +431,7 @@ func Rollback(version string) error {
 	)
 	MustInsert(sLog)
 
-	fmt.Printf("Rolled back migration \"%s\"\n", version)
+	// fmt.Printf("Rolled back migration \"%s\"\n", version)
 
 	return nil
 }

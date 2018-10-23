@@ -24,7 +24,7 @@ func TestMain(m *testing.M) {
 
 	}
 	// Will default to the current os username, no pass, no tls
-	Init(envDBName, "localhost", "", "", false, 0)
+	MustInit(envDBName, "localhost", "", "", false, 0)
 
 	// Set up spew to not use string reps (helpful for buggin')
 	spew.Config.DisableMethods = true
@@ -62,7 +62,7 @@ func TestInitMissingDBName(t *testing.T) {
 				t.Error("TestInitMissingDBName should have panicked on missing db name")
 			}
 		}()
-		Init("", "localhost", "", "", false, 0)
+		MustInit("", "localhost", "", "", false, 0)
 	}()
 }
 

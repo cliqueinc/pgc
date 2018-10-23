@@ -65,7 +65,17 @@ type Config struct {
 	EnvVarNameLogQueries string
 }
 
-func Init(dbName, dbHost, dbUserName, dbPassword string, useTLS bool, dbPort uint16) {
+// MustInit Initializes the Postgres connection pool or panics
+func MustInit(dbName, dbHost, dbUserName, dbPassword string, useTLS bool, dbPort uint16) {
+	err := Init(dbName, dbHost, dbUserName, dbPassword, useTLS, dbPort)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to create a postgres db connection pool to db (%s) user (%s) host (%s), err: (%v)",
+			dbName, dbUserName, dbHost, err))
+	}
+}
+
+// Init Initializes the Postgres connection pool or returns an error
+func Init(dbName, dbHost, dbUserName, dbPassword string, useTLS bool, dbPort uint16) error {
 	if dbName == "" {
 		panic("You must pass a dbName to pgc.Init*")
 	}
@@ -91,10 +101,10 @@ func Init(dbName, dbHost, dbUserName, dbPassword string, useTLS bool, dbPort uin
 		MaxConnections: DB_MAX_CONNECTIONS,
 	})
 	if err != nil {
-		panic(fmt.Sprintf("Failed to create a postgres db connection pool to db (%s) user (%s) host (%s), err: (%v)",
-			dbName, dbUserName, dbHost, err))
+		return err
 	}
 	cfg.Initialized = true
+	return nil
 }
 
 // Dial wraps standard diel func and tries to reconnect to the specified address on failure.
@@ -114,6 +124,7 @@ func Dial(network, addr string) (net.Conn, error) {
 }
 
 // Initialize PGC from environment Variables
+// TODO split this into this and MustInitFromEnv like we did with Init
 func InitFromEnv() {
 	dbName := os.Getenv(cfg.EnvVarNameDB)
 	dbHost := os.Getenv(cfg.EnvVarNameHost)
@@ -138,7 +149,7 @@ func InitFromEnv() {
 	if shouldLogQueries == "true" {
 		cfg.LogQueries = true
 	}
-	Init(dbName, dbHost, dbUserName, dbPassword, useTLS, uint16(dbPortI))
+	MustInit(dbName, dbHost, dbUserName, dbPassword, useTLS, uint16(dbPortI))
 }
 
 func getConn() *pgx.ConnPool {

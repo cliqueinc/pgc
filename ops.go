@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/cliqueinc/pgc/pgcq"
+	"github.com/jackc/pgx"
 )
 
 // defaultAdapter allows to perform pgc operations without creating adapter instance.
@@ -177,6 +178,13 @@ func SelectAllWhere(destSlicePtr interface{}, sqlWhereStmt string, args ...inter
 	if err != nil {
 		panic(err.Error())
 	}
+}
+
+func Query(stmt string, args ...interface{}) (*pgx.Rows, error) {
+	con := getDefault().con
+	rows, err := con.Query(stmt, args...)
+
+	return rows, err
 }
 
 func rawSelect(sqlStmt string, columns []string, joinMods []*model, joinFields [][]*field, requirePK bool, sliceValElement reflect.Value,
